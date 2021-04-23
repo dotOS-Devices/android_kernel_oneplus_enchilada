@@ -1788,7 +1788,7 @@ void int_touch(void)
 
 	if (finger_num == 0/* && last_status && (check_key <= 1)*/) {
 		if (3 == (++prlog_count % 6))
-			TPD_ERR("all finger up\n");
+			TPD_DEBUG("all finger up\n");
 		if (ts->project_version == 0x03) {
 			if ((ts->unlock_succes == 1) && (need_reset ==1) && (ts->is_suspended == 0)) {
 				TPD_DEBUG("touch hold reset %d\n", need_reset);
@@ -1811,7 +1811,7 @@ void int_touch(void)
 
 	if ((finger_num == 0) && (get_tp_base == 0)){//all finger up do get base once
 		get_tp_base = 1;
-		TPD_ERR("start get base data:%d\n",get_tp_base);
+		TPD_DEBUG("start get base data:%d\n",get_tp_base);
 		if (!ts->en_up_down)
 			tp_baseline_get(ts, false);
 	}
@@ -6362,7 +6362,7 @@ static int msm_drm_notifier_callback(
 	return 0;
 	if ((evdata) && (evdata->data) && (ts) && (ts->client)) {
 		blank = evdata->data;
-		TPD_ERR("%s blank[%d],event[0x%lx],evdata->id[%d]\n",
+		TPD_DEBUG("%s blank[%d],event[0x%lx],evdata->id[%d]\n",
 			__func__, *blank, event, evdata->id);
 
 		if ((*blank == MSM_DRM_BLANK_UNBLANK_CUST)
